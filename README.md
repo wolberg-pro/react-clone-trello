@@ -1,69 +1,44 @@
-# React, Redux Firebase Boilerplate
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[![Build Status](https://travis-ci.org/awwong1/react-redux-firebase-boilerplate.svg?branch=master)](https://travis-ci.org/awwong1/react-redux-firebase-boilerplate)
+## Available Scripts
 
-> [Firebase](https://www.firebase.com) is a powerful platform for your mobile and web applications that lets you build apps fast without managing servers. Firebase gives you the tools and infrastructure to build better apps and grow successful businesses.
+In the project directory, you can run:
 
-> [React](https://www.firebase.com) A javascript library for building user interfaces
+### `npm start`
 
-> [Redux](http://redux.js.org/) Redux is a predictable state container for JavaScript apps.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Boilerplate Introduction
-Boilerplate is designed for quickly spin up your apps with Firebase, using bunch of awesome new front-end technologies includes webpack build system, hot reloading, routing & sass support.
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-## Features
-* [react](https://github.com/facebook/react)
-* [redux](https://github.com/rackt/redux)
-* [firebase](https://www.npmjs.com/package/firebase)
-* [react-router](https://github.com/rackt/react-router)
-* [redux-promise](https://github.com/acdlite/redux-promise)
-* [webpack](https://github.com/webpack/webpack)
-* [babel](https://github.com/babel/babel)
+### `npm test`
 
-Quick Start
------------
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```shell
-$ git clone https://github.com/btomashvili/react-redux-firebase-boilerplate.git
-$ cd react-redux-firebase-boilerplate
-$ npm install
-$ npm run dev
-```
+### `npm run build`
 
-Firebase settings
---------
-First you need to create your firebase application to fetch settings for boilerplate. For more information how to add your web app check this [resource](https://firebase.google.com/docs/web/setup). After it copy your settings from firebase and fill config.js
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```javascript
-module.exports = {
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-    FIREBASE_CONFIG: {
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-      apiKey: "",
-      authDomain: "",
-      databaseURL: "",
-      storageBucket: "",
+### `npm run eject`
 
-    }
-}
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Commands
---------
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-|Script|Description|
-|---|---|
-|`npm run dev`| Run development server with webpack-dev-server @ `localhost:3000`|
-|`npm run build`| Test, and build the application to `./dist`|
-|`npm start`| Start production ready app with pm2 from `./dist` @ `localhost:8080`|
-|`npm run lint`| Run ESLint on `./src`|
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-What it looks like
+## Learn More
 
-### DEMO 
-[https://react-redux-firebase-d6283.firebaseapp.com/](https://react-redux-firebase-d6283.firebaseapp.com/)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
---------
-
-![screen](https://www.dropbox.com/s/csufxlitjme8p3q/react_redux_firebase.gif?raw=1 "react_redux_firebase_boilerplate")
+To learn React, check out the [React documentation](https://reactjs.org/).
