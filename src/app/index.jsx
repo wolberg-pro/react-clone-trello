@@ -14,6 +14,8 @@ import 'bootstrap-social';
 
 // for bundling your styles
 import './bundle.scss';
+import './i18n';
+import thunk from 'redux-thunk';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
@@ -22,13 +24,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const logger = createLogger();
 
-const enhancers = [applyMiddleware(ReduxPromise, logger)];
+const enhancers = [applyMiddleware(ReduxPromise, logger, thunk)];
 
 const store = createStore(reducers, composeEnhancers(...enhancers));
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes} />
-    </Provider>, 
+    </Provider>,
     document.querySelector('.react-root')
 );
