@@ -1,18 +1,6 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null",
-    "todo": {
-      ".read": true,
-      ".write": true
-    },
-    "dev": {
-      ".read": true,
-      ".write": true
-    },
-    "staging": {
-      ".read": true,
-      ".write": true
-    }
+    ".read": true,
+    ".write": true
   }
 }

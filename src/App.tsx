@@ -12,7 +12,7 @@ import configureStore from './store'
 const store = configureStore()
 // Initialize Firebase instance
 firebase.initializeApp(fbConfig)
-
+firebase.firestore()
 export default () => (
   <Provider store={store}>
     <ReactReduxFirebaseProvider
