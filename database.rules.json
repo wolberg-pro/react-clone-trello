@@ -1,8 +1,8 @@
 {
   "rules": {
-    ".read": false,
-    ".write": false,
-    "words": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "todo": {
       ".read": true,
       ".write": true
     },
