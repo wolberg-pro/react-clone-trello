@@ -1,7 +1,8 @@
-import React from "react";
-import { AppState, TodoValue } from './reducer'
-import { useSelector } from "react-redux";
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { useFirebase } from 'react-redux-firebase'
+import { TodoValue } from '../../store/dto/todo'
+import { AppState } from '../../store/reducers/reducer'
 
 interface TodoProps {
   todoId: string
@@ -15,13 +16,13 @@ function Todo({ todoId }: TodoProps) {
   function toggleDoneState() {
     firebase.update(`todos/${todoId}`, { done: !todo.done })
   }
-  
+
   return (
     <div className="Todo">
-      <input type="checkbox" onClick={toggleDoneState} /> 
+      <input type="checkbox" onClick={toggleDoneState} />
       {todo.text}
     </div>
-  );
+  )
 }
 
-export default Todo;
+export default Todo

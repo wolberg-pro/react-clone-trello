@@ -5,9 +5,12 @@ import 'firebase/firestore' // make sure you add this for firestore
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
-import { firebase as fbConfig, reduxFirebase as rfConfig } from './config'
-import Home from './Home'
-import configureStore from './store'
+import {
+  firebase as fbConfig,
+  reduxFirebase as rfConfig
+} from '../config/firebase'
+import Home from './home/Home'
+import configureStore from '../store'
 
 const store = configureStore()
 // Initialize Firebase instance

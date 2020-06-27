@@ -1,5 +1,5 @@
 import { compose, createStore } from 'redux'
-import rootReducer from './reducer'
+import rootReducer from './reducers/reducer'
 
 export default function configureStore(): any {
   const createStoreWithMiddleware = compose(
@@ -13,8 +13,8 @@ export default function configureStore(): any {
 
   if ((module as any).hot) {
     // Enable Webpack hot module replacement for reducers
-    ;(module as any).hot.accept('./reducer', () => {
-      const nextRootReducer = require('./reducer') // eslint-disable-line global-require, @typescript-eslint/no-var-requires
+    ;(module as any).hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers/reducer') // eslint-disable-line global-require, @typescript-eslint/no-var-requires
       store.replaceReducer(nextRootReducer)
     })
   }

@@ -1,7 +1,7 @@
-import React from 'react';
-import Todos from './Todos';
-import AddTodo from './AddTodo';
-import './App.css'
+import React from 'react'
+import Todos from '../todo/Todos'
+import AddTodo from '../todo/AddTodo'
+import './Home.css'
 
 function Home() {
   return (
