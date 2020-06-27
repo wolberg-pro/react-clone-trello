@@ -1,4 +1,4 @@
-import { FirebaseReducer, FirestoreReducer } from 'react-redux-firebase';
+import { FirebaseReducer } from 'react-redux-firebase';
 
 export interface UserProfile {
   email: string
@@ -16,5 +16,5 @@ export interface DBSchema {
 }
 export interface RootState {
   firebase: FirebaseReducer.Reducer<UserProfile>
-  firestore: FirestoreReducer.Reducer
+  // firestore: FirestoreReducer.Reducer
 }

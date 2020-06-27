@@ -5,11 +5,12 @@ import ReduxPromise from 'redux-promise'
 import reducers from './reducers'
 
 export default function configureStore(): any {
-  const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
+  // const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
 
   // Redux Dev tools
   const composeEnhancers =
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  // eslint-disable-next-line no-underscore-dangle
+  (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
   const logger = createLogger()
   const enhancers = [applyMiddleware(ReduxPromise, logger, thunk)]

@@ -6,16 +6,16 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 import {
-  firebase as fbConfig,
+  firebaseConfig as fbConfig,
   reduxFirebase as rfConfig
 } from '../config/firebase'
 import Home from './home/Home'
 import configureStore from '../store'
 
-const store = configureStore()
 // Initialize Firebase instance
 firebase.initializeApp(fbConfig)
 firebase.firestore()
+const store = configureStore()
 export default () => (
   <Provider store={store}>
     <ReactReduxFirebaseProvider
