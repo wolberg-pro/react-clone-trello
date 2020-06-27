@@ -1,7 +1,7 @@
 import React from 'react'
 import Todos from '../todo/Todos'
 import AddTodo from '../todo/AddTodo'
-import './Home.css'
+import './Home.scss'
 
 function Home() {
   return (
