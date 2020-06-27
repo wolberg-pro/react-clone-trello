@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
-import {
-  firebaseReducer,
-  firestoreReducer
-} from 'react-redux-firebase'
+import { firebaseReducer, firestoreReducer } from 'react-redux-firebase'
 import { RootState } from '../dto/todo'
+
 const rootReducer = combineReducers<RootState>({
   firebase: firebaseReducer,
   firestore: firestoreReducer
