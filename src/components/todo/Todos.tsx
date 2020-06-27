@@ -1,7 +1,7 @@
 import React from 'react'
 import { isLoaded, isEmpty, useFirebaseConnect } from 'react-redux-firebase'
 import { useSelector } from 'react-redux'
-import { AppState } from '../../store/reducers/reducer'
+import { AppState } from '../../store/reducers'
 import Todo from './Todo'
 
 function Todos() {
