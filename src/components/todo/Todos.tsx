@@ -7,7 +7,7 @@ import Todo from './Todo'
 function Todos() {
   useFirebaseConnect([{ path: 'todos', queryParams: ['limitToLast=10'] }])
   const todos = useSelector((state: AppState) => {
-    return state.firebase.ordered.todos
+    return (state.firebase.ordered.todos) ? state.firebase.ordered.todos.filter(todoItem => !todoItem.done) : [];
   })
 
   if (!isLoaded(todos)) {
@@ -21,9 +21,11 @@ function Todos() {
   return (
     <div className="Todos">
       {todos &&
-        todos.map(todoItem => {
-          return <Todo key={todoItem.key} todoId={todoItem.key} />
-        })}
+        todos
+
+          .map(todoItem => {
+            return <Todo key={todoItem.key} todoId={todoItem.key} />
+          })}
     </div>
   )
 }

@@ -13,6 +13,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
+    "axois": "0.0.1-security",
     "bootstrap-social": "^5.0.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
@@ -23,12 +24,15 @@
     "i18next-browser-languagedetector": "5.0.0",
     "i18next-http-backend": "^1.0.15",
     "lodash": "^4.17.15",
+    "phaser": "^3.23.0",
     "primeicons": "^4.0.0",
     "primereact": "^4.2.2",
     "react": "^16.10.0",
+    "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.10.0",
     "react-gsap": "^2.2.1",
     "react-i18next": "11.3.4",
+    "react-phaser-fiber": "^0.2.4",
     "react-redux": "^7.1.0",
     "react-redux-firebase": "next",
     "react-router": "^2.0.0-rc5",
@@ -44,6 +48,7 @@
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
+    "tailwindcss": "^1.4.6",
     "reselect": "^4.0.0"
   },
   "devDependencies": {
@@ -56,6 +61,7 @@
     "@types/redux-promise": "^0.5.29",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
+    "autoprefixer": "^9.8.4",
     "customize-cra": "^1.0.0",
     "customize-cra-react-refresh": "^1.1.0",
     "eslint": "^6.8.0",
@@ -68,6 +74,7 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "node-sass-chokidar": "^1.5.0",
+    "postcss-cli": "^7.1.1",
     "prettier": "^1.19.1",
     "react-app-rewired": "^2.1.6",
     "react-scripts": "3.4.1",

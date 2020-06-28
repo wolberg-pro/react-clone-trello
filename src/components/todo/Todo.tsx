@@ -10,7 +10,10 @@ interface TodoProps {
 
 function Todo({ todoId }: TodoProps) {
   const todo: TodoValue = useSelector((state: AppState) => {
-    return state.firebase.data.todos && state.firebase.data.todos[todoId]
+    return (
+      state.firebase.data.todos &&
+      state.firebase.data.todos[todoId]
+    )
   })
   const firebase = useFirebase()
   function toggleDoneState() {
