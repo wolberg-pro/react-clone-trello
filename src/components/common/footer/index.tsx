@@ -1,0 +1,10 @@
+import React from 'react';
+
+interface Props {
+}
+
+const Footer = (props: Props) => {
+    return null;
+};
+
+export default Footer;
