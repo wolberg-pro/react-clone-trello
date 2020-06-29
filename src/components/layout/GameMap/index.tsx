@@ -8,6 +8,7 @@ interface Props {
 }
 
 class GameMap extends React.Component<Props> {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(props: Props) {
     super(props)
   }
@@ -16,16 +17,16 @@ class GameMap extends React.Component<Props> {
     const { props } = this
 
     return (
-      <div className="flex flex-col-reverse bg-gray-200">
-        <div className="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+      <div className="flex flex-col">
+        <header className="px-4 py-2 m-2">
           <Header />
-        </div>
+        </header>
         <div className="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
           {props.children}
         </div>
-        <div className="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+        <footer className="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
           <Footer />
-        </div>
+        </footer>
       </div>
     )
   }

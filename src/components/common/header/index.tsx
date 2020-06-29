@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-script-url */
 import React from 'react'
-import CoffieBreak from '../coffieBreak'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -7,32 +8,42 @@ interface Props {}
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Headers = (props: Props) => {
   return (
-    <div className="p-grid bg-gray-200">
-      <div className="p-col">
-        <h1 className="font-serif text-5xl font-extrabold">Sivan Wolberg</h1>
-        <span className="font-serif text-sm">Developer, Solver , tinker</span>
+    <div className="flex ">
+      <div className="flex-1 px-4">
+        <h1 className="font-serif text-3xl font-extrabold">Sivan Wolberg</h1>
+        <span className="font-serif text-xs">Developer, Solver , tinker</span>
       </div>
-      <div className="p-col">
-        <div className="flex ">
-          <div className="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-            About me
-          </div>
-          <div className="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-            My Skills
-          </div>
-          <div className="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-            Mini Games
-          </div>
-          <div className="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-            My Projects
-          </div>
-          <div className="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-            Contact me
-          </div>
-        </div>
-      </div>
-      <div className="p-col">
-        <CoffieBreak />
+      <div className="flex-1 self-center">
+        <ul className="flex">
+          <li className="mr-6">
+            <a
+              className="text-blue-500 hover:text-blue-800"
+              href="javascript:void(0)">
+              Active
+            </a>
+          </li>
+          <li className="mr-6">
+            <a
+              className="text-blue-500 hover:text-blue-800"
+              href="javascript:void(0)">
+              Link
+            </a>
+          </li>
+          <li className="mr-6">
+            <a
+              className="text-blue-500 hover:text-blue-800"
+              href="javascript:void(0)">
+              Link
+            </a>
+          </li>
+          <li className="mr-6">
+            <a
+              className="text-gray-400 cursor-not-allowed"
+              href="javascript:void(0)">
+              Disabled
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   )

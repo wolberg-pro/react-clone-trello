@@ -1,10 +1,11 @@
-import React from 'react';
+import React from 'react'
+// tslint:disable-next-line:no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
 
-interface Props {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function Footer(props: Props) {
+  return <div></div>
 }
 
-const Footer = (props: Props) => {
-    return null;
-};
-
-export default Footer;
+export default Footer
