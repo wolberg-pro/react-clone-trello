@@ -57,6 +57,7 @@ export interface WorldLocation {
 
 export interface WorldState {
   errorMessage?: string
+  worldLoading?: boolean
   definitions: WorldMapDefinitions
   status: WorldStatus
   locations: WorldLocation[]

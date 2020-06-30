@@ -1,15 +1,32 @@
+import { AxiosResponse } from 'axios'
 import {
   ON_WORLD_ENTER,
   ON_WORLD_BUILD,
   ON_WORLD_PLAYER,
   ON_WORLD_END,
-  AppThunk
+  AppThunk,
+  ON_WORLD_ERROR
 } from '../../common/types'
+import { triggerWorldBuildingState } from './common'
+import { WorldState } from '../dto/world'
+import { WorldApi } from '../api/worldApi'
 // tslint:disable-next-line: no-unused-expression
 export const startLoadWorld = (): AppThunk => {
   return async dispatch => {
-    return {
-      type: ON_WORLD_ENTER
+    dispatch(triggerWorldBuildingState(true))
+    try {
+      const response: AxiosResponse<WorldState> = await WorldApi.getWorldDefinitions()
+      return {
+        type: ON_WORLD_ENTER,
+        payload: response
+      }
+    } catch (e) {
+      // tslint:disable-next-line: no-console
+      // eslint-disable-next-line no-console
+      console.log('ERROR in world building: failed in fetch definitions', e)
+      return {
+        type: ON_WORLD_ERROR
+      }
     }
   }
 }

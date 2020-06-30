@@ -6,4 +6,5 @@ export interface RootState {
   firebase: FirebaseReducer.Reducer<UserProfile>
   firestore: FirestoreReducer.Reducer
   world: WorldState
+  loading: boolean
 }
