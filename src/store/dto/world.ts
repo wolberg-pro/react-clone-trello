@@ -2,7 +2,8 @@ export enum WorldStatus {
   Start,
   Building,
   LoadingPlayer,
-  Done
+  Done,
+  Error
 }
 export enum WorldLocations {
   Start,
@@ -12,10 +13,39 @@ export enum WorldLocations {
   MyProjects,
   ContactMe
 }
+export enum WorldItemMetaData {
+  RoadLine,
+  RoadLineR,
+  RoadLineL,
+  RoadLineT,
+  RoadLineX,
+  Rock,
+  Tree,
+  House,
+  SpawnPoint
+}
 export interface Player {
   currentLocation: WorldLocations
 }
-
+export interface WorldItem {
+  type: WorldItemMetaData
+  posX: number
+  posY: number
+}
+export interface WorldMapDefinitions {
+  title: string
+  shortInfo: string
+  sizeW: number
+  sizeH: number
+  roundWater: boolean
+  borderEdge: boolean
+  treeFactor: number
+  rockFactor: number
+  wonderNpcs?: boolean
+  entitiesNpcs?: string
+  entitiesBlockMovement: WorldItemMetaData[]
+  entities: WorldItem[]
+}
 export interface WorldLocation {
   assetTileName: string
   location: WorldLocations
@@ -26,6 +56,8 @@ export interface WorldLocation {
 }
 
 export interface WorldState {
+  errorMessage?: string
+  definitions: WorldMapDefinitions
   status: WorldStatus
   locations: WorldLocation[]
   player: Player

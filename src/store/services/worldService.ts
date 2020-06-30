@@ -1,10 +1,26 @@
+/* eslint-disable no-param-reassign */
 import { Subject, Observable, of } from 'rxjs'
-import { tap, mergeMap } from 'rxjs/operators'
-import { WorldStatus, WorldState, WorldLocations, WorldLocation } from '../dto/world';
+import { mergeMap } from 'rxjs/operators'
+import i18next from 'i18next'
+
+import {
+  WorldStatus,
+  WorldState,
+  WorldLocations,
+  WorldLocation
+} from '../dto/world'
 import { AppDispatch } from '../../common/types'
 
 export class WorldService {
   private static instance: WorldService
+
+  private translate: any
+
+  private subject$: Subject<WorldState> = new Subject<WorldState>()
+
+  private dispatch: AppDispatch = null
+
+  private worldState!: WorldState
 
   private constructor() {}
 
@@ -16,100 +32,73 @@ export class WorldService {
     return WorldService.instance
   }
 
-  private subject$: Subject<WorldState> = new Subject<WorldState>()
-
-  private dispatch: AppDispatch = null
-
   public initWorld(dispatch: AppDispatch): void {
     this.dispatch = dispatch
     this.subject$.complete()
     this.subject$.pipe(
-      tap((worldState: WorldState) => this.loadWorldStage(worldState))
-      mergeMap((worldState: WorldState) => this.parseWorldState(worldState))
+      mergeMap((worldState: WorldState) => this.loadWorldStage(worldState))
     )
   }
 
-  private loadWorldStage(worldState: WorldState): void {
-    switch (worldState.status) {
-      case WorldStatus.Start:
-        this.initWorldBuild()
-        break
-      case WorldStatus.Building:
-        this.handleWorldBuild()
-        break
-      case WorldStatus.LoadingPlayer:
-        this.handlePlayer()
-        break
-      case WorldStatus.Done:
-        this.finalizedWorld()
-        break
+  private loadWorldStage(worldState: WorldState): Observable<WorldState> {
+    this.worldState = worldState
+    if (this.worldState) {
+      switch (worldState.status) {
+        case WorldStatus.Start:
+          return this.initWorldBuild()
+        case WorldStatus.Building:
+          return this.handleWorldBuild()
+        case WorldStatus.LoadingPlayer:
+          return this.handlePlayer()
+        case WorldStatus.Done:
+          return this.finalizedWorld()
+      }
     }
-  }
-  private parseWorldState(worldState: WorldState): Observable<WorldState> {
-    return of(worldState);
+    return this.onErrorWorldBuild()
   }
 
-  private initWorldBuild(): void {}
-
-  private handleWorldBuild(): void {}
-
-  private handlePlayer(): void {}
-
-  private finalizedWorld(): void {}
-  private initWorldLocations() :WorldLocation[] {
-  return [
-        {
-          assetTileName: '',
-          location: WorldLocations.Start,
-          isComingSoon: false,
-          isDisable: false,
-          title: 'Start location',
-          shortInfo: 'Here the journey start'
-        },{
-          assetTileName: '',
-          location: WorldLocations.AboutMe,
-          isComingSoon: true,
-          isDisable: false,
-          title: 'About my self',
-          shortInfo: 'Here in the journey we will talk about my self'
-        },{
-          assetTileName: '',
-          location: WorldLocations.MySkills,
-          isComingSoon: true,
-          isDisable: false,
-          title: 'Here my skills',
-          shortInfo: 'when going on journey you need know skills don\'t we?'
-        },{
-          assetTileName: '',
-          location: WorldLocations.MiniGames,
-          isComingSoon: false,
-          isDisable: true,
-          title: 'Mini Games',
-          shortInfo: 'let have fun on this journey let\'s play'
-        },{
-          assetTileName: '',
-          location: WorldLocations.MyProjects,
-          isComingSoon: false,
-          isDisable: true,
-          title: 'My Projects',
-          shortInfo: 'let see what i did on this journey please not many things on journey wasn\'t included'
-        },{
-          assetTileName: '',
-          location: WorldLocations.ContactMe,
-          isComingSoon: false,
-          isDisable: false,
-          title: 'Contact Me',
-          shortInfo: 'One journey and next one about to start wish talk to me?'
-        }
-      ]
+  private onErrorWorldBuild(): Observable<WorldState> {
+    this.worldState.status = WorldStatus.Error
+    this.worldState.errorMessage = this.translate.t('ERR_Map_Loading')
+    return of(this.worldState)
   }
+
+  private initWorldBuild(): Observable<WorldState> {
+    return of(this.worldState)
+  }
+
+  private handleWorldBuild(): Observable<WorldState> {
+    return of(this.worldState)
+  }
+
+  private handlePlayer(): Observable<WorldState> {
+    return of(this.worldState)
+  }
+
+  private finalizedWorld(): Observable<WorldState> {
+    return of(this.worldState)
+  }
+
   public get getWorld(): Observable<WorldState> {
     return this.subject$.asObservable()
   }
 
-  public renderMap(): void {
+  public renderMap(translate: any): void {
+    this.translate = translate
     this.subject$.next({
-      locations: this.initWorldLocations(),
+      locations: [],
+      definitions: {
+        entities: [],
+        entitiesBlockMovement: [],
+        title: '',
+        shortInfo: '',
+        borderEdge: true,
+        treeFactor: 0,
+        rockFactor: 0,
+        roundWater: false,
+        sizeH: 0,
+        sizeW: 0
+      },
       status: WorldStatus.Start,
       player: {
         currentLocation: WorldLocations.Start
