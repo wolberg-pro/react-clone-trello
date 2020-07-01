@@ -1,12 +1,19 @@
 import { combineReducers } from 'redux'
-import { firebaseReducer } from 'react-redux-firebase'
-import { RootState } from '../dto/todo'
+import { firebaseReducer, firestoreReducer } from 'react-redux-firebase'
+import {  persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { RootState } from '../dto/rootState'
+
+const persistConfig = {
+  key: 'profolio_site',
+  storage
+}
 
 const rootReducer = combineReducers<RootState>({
   firebase: firebaseReducer,
-  // firestore: firestoreReducer
+  firestore: firestoreReducer
 })
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+export type AppState = ReturnType<typeof persistedReducer>
 
-export type AppState = ReturnType<typeof rootReducer>
-
-export default rootReducer
+export default persistedReducer

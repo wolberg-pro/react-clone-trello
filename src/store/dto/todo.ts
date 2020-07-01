@@ -1,4 +1,3 @@
-import { FirebaseReducer } from 'react-redux-firebase';
 
 export interface UserProfile {
   email: string
@@ -13,8 +12,4 @@ export interface TodoValue {
 export interface DBSchema {
   todos: TodoValue
   [name: string]: any
-}
-export interface RootState {
-  firebase: FirebaseReducer.Reducer<UserProfile>
-  // firestore: FirestoreReducer.Reducer
 }

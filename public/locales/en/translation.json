@@ -1,3 +1,21 @@
 {
-  "test": "Test Lang"
+  "Map_title": "My Journey",
+  "Map_subtitle": "Small Area you can see and go to a journey",
+  "Map_Location_Start_title": "Start location",
+  "Map_Location_Start_subtitle": "Here the journey start",
+  "Map_Location_About_title": "About my self",
+  "Map_Location_About_subtitle":
+  "Here in the journey we will talk about my self",
+  "Map_Location_MiniGames_title": "Mini Games",
+  "Map_Location_MiniGames_subtitle": "let have fun on this journey let's play",
+  "Map_Location_MySkills_title": "Here my skills",
+  "Map_Location_MySkills_subtitle":
+  "when going on journey you need know skills don't we?",
+  "Map_Location_MyProjects_title": "My Projects",
+  "Map_Location_MyProjects_subtitle":
+  "let see what i did on this journey please not many things on journey wasn't included",
+  "Map_Location_ContactMe_title": "Contact Me",
+  "Map_Location_ContactMe_subtitle":
+  "One journey and next one about to start wish talk to me?",
+  "ERR_Map_Loading": "Failed Build World Map"
 }
