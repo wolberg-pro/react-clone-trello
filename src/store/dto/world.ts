@@ -63,3 +63,23 @@ export interface WorldState {
   locations: WorldLocation[]
   player: Player
 }
+
+export const initialWorldState: WorldState = {
+  locations: [],
+  definitions: {
+    entities: [],
+    entitiesBlockMovement: [],
+    title: '',
+    shortInfo: '',
+    borderEdge: true,
+    treeFactor: 0,
+    rockFactor: 0,
+    roundWater: false,
+    sizeH: 0,
+    sizeW: 0
+  },
+  status: WorldStatus.Start,
+  player: {
+    currentLocation: WorldLocations.Start
+  }
+}

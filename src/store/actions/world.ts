@@ -10,12 +10,17 @@ import {
 import { triggerWorldBuildingState } from './common'
 import { WorldState } from '../dto/world'
 import { WorldApi } from '../api/worldApi'
+
+export interface WorldDispatchToPropTypes {
+  startBuildWorld: () => void
+}
 // tslint:disable-next-line: no-unused-expression
 export const startLoadWorld = (): AppThunk => {
   return async dispatch => {
     dispatch(triggerWorldBuildingState(true))
     try {
       const response: AxiosResponse<WorldState> = await WorldApi.getWorldDefinitions()
+      dispatch(buildWorld(response))
       return {
         type: ON_WORLD_ENTER,
         payload: response
@@ -31,7 +36,7 @@ export const startLoadWorld = (): AppThunk => {
   }
 }
 // tslint:disable-next-line: no-unused-expression
-export const buildWorld = (): AppThunk => {
+export const buildWorld = (response: AxiosResponse<WorldState>): AppThunk => {
   return async dispatch => {
     return {
       type: ON_WORLD_BUILD
@@ -54,3 +59,8 @@ export const endWorldBuilding = (): AppThunk => {
     }
   }
 }
+
+export type worldActions =
+  | typeof endWorldBuilding
+  | typeof buildWorld
+  | typeof startLoadWorld

@@ -1,14 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { Subject, Observable, of } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
-import i18next from 'i18next'
-
-import {
-  WorldStatus,
-  WorldState,
-  WorldLocations,
-  WorldLocation
-} from '../dto/world'
+import { WorldStatus, WorldState, WorldLocations, initialWorldState } from '../dto/world'
 import { AppDispatch } from '../../common/types'
 
 export class WorldService {
@@ -18,11 +11,15 @@ export class WorldService {
 
   private subject$: Subject<WorldState> = new Subject<WorldState>()
 
-  private dispatch: AppDispatch = null
+  private dispatch: AppDispatch | undefined = null
 
   private worldState!: WorldState
 
-  private constructor() {}
+  private constructor() {
+    this.subject$.pipe(
+      mergeMap((worldState: WorldState) => this.loadWorldStage(worldState))
+    )
+  }
 
   static getInstance(): WorldService {
     if (!WorldService.instance) {
@@ -32,12 +29,10 @@ export class WorldService {
     return WorldService.instance
   }
 
-  public initWorld(dispatch: AppDispatch): void {
+  public initWorld(dispatch: AppDispatch | undefined, translate: any): void {
     this.dispatch = dispatch
-    this.subject$.complete()
-    this.subject$.pipe(
-      mergeMap((worldState: WorldState) => this.loadWorldStage(worldState))
-    )
+    this.translate = translate
+    this.subject$.next(initialWorldState)
   }
 
   private loadWorldStage(worldState: WorldState): Observable<WorldState> {
@@ -83,26 +78,7 @@ export class WorldService {
     return this.subject$.asObservable()
   }
 
-  public renderMap(translate: any): void {
-    this.translate = translate
-    this.subject$.next({
-      locations: [],
-      definitions: {
-        entities: [],
-        entitiesBlockMovement: [],
-        title: '',
-        shortInfo: '',
-        borderEdge: true,
-        treeFactor: 0,
-        rockFactor: 0,
-        roundWater: false,
-        sizeH: 0,
-        sizeW: 0
-      },
-      status: WorldStatus.Start,
-      player: {
-        currentLocation: WorldLocations.Start
-      }
-    })
+  public updateMapState(worldState: WorldState): void {
+    this.subject$.next(worldState)
   }
 }

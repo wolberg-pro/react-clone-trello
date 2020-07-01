@@ -1,15 +1,36 @@
 import React from 'react'
+import i18next from 'i18next'
 import { Game, Scene, Text } from 'react-phaser-fiber'
+import { connect, ConnectedProps } from 'react-redux'
+import { RootState } from '../../store/dto/rootState'
+import { AppDispatch } from '../../common/types'
+import { startLoadWorld } from '../../store/actions/world'
+import { worldSelectorFromState } from '../../store/selectors/worldSelect'
+import { WorldService } from '../../store/services/worldService'
 
-interface Props {
+const mapState = (state: RootState) => ({
+  world: worldSelectorFromState(state)
+})
+
+const mapDispatch = (dispatch: AppDispatch) => ({
+  startBuildWorld: () => dispatch(startLoadWorld())
+})
+
+const connector = connect(mapState, mapDispatch)
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type Props = PropsFromRedux & {
   width: number
   height: number
+  dispatch?: AppDispatch
 }
 
 class Map extends React.Component<Props> {
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(props: Props) {
     super(props)
+    const { dispatch } = props
+    WorldService.getInstance().initWorld(dispatch)
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -21,8 +42,13 @@ class Map extends React.Component<Props> {
     )
   }
 
-  public componentDidMount(){
+  // eslint-disable-next-line class-methods-use-this
+  public componentDidMount(): void {
+    const { t } = i18next
+    const { startBuildWorld } = this.props
+    WorldService.getInstance().renderMap(t)
   }
+
   public render() {
     const { props } = this
 
@@ -46,11 +72,10 @@ class Map extends React.Component<Props> {
               text={`Loading... (${progress * 100}%)`}
               style={{ color: 'white' }}
             />
-          )}>
-          </Scene>
+          )}></Scene>
       </Game>
     )
   }
 }
 
-export default Map
+export default connect(mapState, mapDispatch)(Map)
