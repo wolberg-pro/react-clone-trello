@@ -33,6 +33,7 @@ export interface WorldItem {
   posY: number
 }
 export interface WorldMapDefinitions {
+  seed: string
   title: string
   shortInfo: string
   sizeW: number
@@ -67,6 +68,7 @@ export interface WorldState {
 export const initialWorldState: WorldState = {
   locations: [],
   definitions: {
+    seed: '',
     entities: [],
     entitiesBlockMovement: [],
     title: '',

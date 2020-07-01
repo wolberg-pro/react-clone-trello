@@ -29,8 +29,6 @@ class Map extends React.Component<Props> {
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(props: Props) {
     super(props)
-    const { dispatch } = props
-    WorldService.getInstance().initWorld(dispatch)
   }
 
   // eslint-disable-next-line class-methods-use-this

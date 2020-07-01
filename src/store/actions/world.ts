@@ -1,4 +1,7 @@
 import { AxiosResponse } from 'axios'
+
+import i18next from 'i18next'
+
 import {
   ON_WORLD_ENTER,
   ON_WORLD_BUILD,
@@ -10,6 +13,7 @@ import {
 import { triggerWorldBuildingState } from './common'
 import { WorldState } from '../dto/world'
 import { WorldApi } from '../api/worldApi'
+import { WorldService } from '../services/worldService'
 
 export interface WorldDispatchToPropTypes {
   startBuildWorld: () => void
@@ -18,6 +22,7 @@ export interface WorldDispatchToPropTypes {
 export const startLoadWorld = (): AppThunk => {
   return async dispatch => {
     dispatch(triggerWorldBuildingState(true))
+    WorldService.getInstance().initWorld(dispatch, i18next.t)
     try {
       const response: AxiosResponse<WorldState> = await WorldApi.getWorldDefinitions()
       dispatch(buildWorld(response))
@@ -26,8 +31,6 @@ export const startLoadWorld = (): AppThunk => {
         payload: response
       })
     } catch (e) {
-      // tslint:disable-next-line: no-console
-      // eslint-disable-next-line no-console
       console.log('ERROR in world building: failed in fetch definitions', e)
       return dispatch({
         type: ON_WORLD_ERROR
@@ -38,6 +41,7 @@ export const startLoadWorld = (): AppThunk => {
 // tslint:disable-next-line: no-unused-expression
 export const buildWorld = (response: AxiosResponse<WorldState>): AppThunk => {
   return async dispatch => {
+    WorldService.getInstance().updateMapState(response.data)
     return dispatch({
       type: ON_WORLD_BUILD
     })

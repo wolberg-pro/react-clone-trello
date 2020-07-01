@@ -17,6 +17,7 @@
     "bootstrap-social": "^5.0.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
+    "fast-simplex-noise": "^3.2.1",
     "firebase": "^7.15.4",
     "gsap": "^3.3.4",
     "history": "^5.0.0",
@@ -51,6 +52,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "rxjs": "^6.5.5",
+    "seedrandom": "^3.0.5",
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {

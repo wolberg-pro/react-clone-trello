@@ -1,5 +1,6 @@
 {
   "definitions": {
+    "seed": "sivan wolber",
     "title": "Map_title",
     "shortInfo": "Map_subtitle",
     "sizeW": 800,
