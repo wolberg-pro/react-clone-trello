@@ -1,0 +1,75 @@
+{
+  "definitions": {
+    "title": "Map_title",
+    "shortInfo": "Map_subtitle",
+    "sizeW": 800,
+    "sizeH": 500,
+    "roundWater": true,
+    "borderEdge": true,
+    "treeFactor": 0.5,
+    "rockFactor": 0.3,
+    "entitiesBlockMovement": [
+      5,
+      6,
+      7
+    ],
+    "entities": [{
+      "type": 8,
+      "posX": 400,
+      "posY": 200
+    }]
+  },
+  "locations": [{
+      "assetTileName": "",
+      "location": 0,
+      "isComingSoon": false,
+      "isDisable": false,
+      "title": "Map_Location_Start_title",
+      "shortInfo": "Map_Location_Start_subtitle"
+    },
+    {
+      "assetTileName": "",
+      "location": 1,
+      "isComingSoon": true,
+      "isDisable": false,
+      "title": "Map_Location_About_title",
+      "shortInfo": "Map_Location_About_subtitle"
+    },
+    {
+      "assetTileName": "",
+      "location": 2,
+      "isComingSoon": true,
+      "isDisable": false,
+      "title": "Map_Location_MySkills_title",
+      "shortInfo": "Map_Location_MySkills_subtitle"
+    },
+    {
+      "assetTileName": "",
+      "location": 3,
+      "isComingSoon": false,
+      "isDisable": true,
+      "title": "Map_Location_MiniGames_title",
+      "shortInfo": "Map_Location_MiniGames_subtitle"
+    },
+    {
+      "assetTileName": "",
+      "location": 4,
+      "isComingSoon": false,
+      "isDisable": true,
+      "title": "Map_Location_MyProjects_title",
+      "shortInfo": "Map_Location_MyProjects_subtitle"
+    },
+    {
+      "assetTileName": "",
+      "location": 5,
+      "isComingSoon": false,
+      "isDisable": false,
+      "title": "Map_Location_ContactMe_title",
+      "shortInfo": "Map_Location_ContactMe_subtitle"
+    }
+  ],
+  "status": 0,
+  "player": {
+    "currentLocation": 0
+  }
+}

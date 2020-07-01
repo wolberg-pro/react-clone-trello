@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "axois": "0.0.1-security",
+    "axios": "^0.19.2",
     "bootstrap-social": "^5.0.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
@@ -44,14 +44,19 @@
     "redux-firestore": "^0.13.0",
     "redux-form": "^8.3.6",
     "redux-logger": "^3.0.6",
+    "redux-observable": "^1.2.0",
     "redux-pack": "^0.1.5",
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "rxjs": "^6.5.5",
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
+    "@develephant/types-phaser": "^1.0.1",
+    "@reactivex/rxjs": "^6.5.5",
+    "@types/axios": "^0.14.0",
     "@types/jest": "25.1.2",
     "@types/node": "13.7.0",
     "@types/react": "16.9.19",
@@ -61,6 +66,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/redux-logger": "^3.0.8",
     "@types/redux-promise": "^0.5.29",
+    "@types/rx": "^4.1.2",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
     "autoprefixer": "^9.8.4",
