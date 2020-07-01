@@ -15,7 +15,7 @@
 
 /.firebase
 firebase-debug.log*
-
+/src/config/firebase.ts
 # misc
 .DS_Store
 .env.local
