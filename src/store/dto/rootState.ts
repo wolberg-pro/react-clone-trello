@@ -9,4 +9,5 @@ export interface RootStateData {
 export interface RootState {
   firebase: FirebaseReducer.Reducer<UserProfile>
   firestore: FirestoreReducer.Reducer
+  world: WorldState
 }

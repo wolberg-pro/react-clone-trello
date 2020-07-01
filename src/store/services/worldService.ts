@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { Subject, Observable, of } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
-import { WorldStatus, WorldState, WorldLocations, initialWorldState } from '../dto/world'
+import { WorldStatus, WorldState, initialWorldState } from '../dto/world'
 import { AppDispatch } from '../../common/types'
 
 export class WorldService {

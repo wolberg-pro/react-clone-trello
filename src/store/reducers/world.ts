@@ -1,12 +1,9 @@
-import { Reducer } from 'react'
-import { worldActions } from '../actions/world'
+import { Reducer, combineReducers } from 'redux'
 import { WorldState, initialWorldState } from '../dto/world'
+import { ON_WORLD_ENTER } from '../../common/types'
 
 // tslint:disable-next-line:no-unused-expression
-const worldReducer: Reducer<WorldState, worldActions> = (
-  state = initialWorldState,
-  action
-) => {
+const reducer: Reducer<WorldState> = (state = initialWorldState, action) => {
   switch (action.type) {
     case ON_WORLD_ENTER: {
       return {
@@ -21,4 +18,5 @@ const worldReducer: Reducer<WorldState, worldActions> = (
 }
 
 // tslint:disable-next-line:no-empty
-const neverReached = (never: never) => {}
+const neverReached = (never: any) => {}
+export { reducer as WorldReducer }
